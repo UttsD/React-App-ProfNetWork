@@ -1,0 +1,35 @@
+.post_btns a {
+    height: 34px;
+    width: 34px;
+    display: inline-block;
+    border: 1px solid #9b9b9b;
+    color: #333333;
+    text-align: center;
+    line-height: 30px;
+    margin: 5px;
+    padding: 2px 0;
+}
+
+.post_txt{
+    padding: 15px 18px 0px 0px;
+}
+
+.one_post{
+    display: flex;
+    padding: 25px 0px ;
+    border-bottom: 1px dashed #f2f2f2;
+}
+
+.post_img{
+    padding:  0 20px 0 0;
+}
+
+.one_post h5 {
+    font-size: 18px;
+}
+
+.post_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

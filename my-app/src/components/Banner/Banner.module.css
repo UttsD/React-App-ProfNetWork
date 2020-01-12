@@ -1,0 +1,84 @@
+.banner{
+    min-height: 250px;
+    /*background: url(../public/imagg.jpg) no-repeat;*/
+    background-position: center;
+    background-size: cover;
+    background-color: #0099ff;
+}
+
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: auto;
+    align-content: space-between;
+    margin-top: 113px;
+
+}
+
+.nav li a{
+    display: block;
+    background-color: #f2f2f2;
+    min-width: 112px;
+    height: 40px;
+    text-align: center;
+    
+    margin-right: 5px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    box-shadow: -1px -1px 2px rgba(206, 206, 206, 0.5);
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.nav li a {
+    align-items: center;
+    color: #737373;
+    text-transform: capitalize;
+}
+
+.banner{
+    padding-top: 48px;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 58px;
+
+}
+.user{
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.buttons, .rect_btns, .icon_btns{
+    display: flex;
+}
+
+.buttons a{
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+    text-transform: uppercase;
+    display: block;
+    margin-left: 10px;
+    
+}
+
+.rect_btns a{
+    border-radius: 4px;
+    padding: 8px 15px;   
+}
+
+li a.activeLink{
+    color: #333333;
+    background: #fff;
+}
+
+
+

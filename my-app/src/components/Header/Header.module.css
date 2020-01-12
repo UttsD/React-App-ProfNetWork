@@ -1,0 +1,30 @@
+header{
+    max-width: 1800px;
+    padding:  24px 48px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.header ul {
+    display: flex;
+}
+
+.header ul li{
+    padding: 10px;
+}
+
+.top_menu{
+    display: flex;
+    align-items: flex-end;
+}
+
+.top_menu a {
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+}
