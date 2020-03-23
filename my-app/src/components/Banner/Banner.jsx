@@ -1,17 +1,18 @@
 import React from 'react';
 import s from './Banner.module.css'
 import { NavLink } from 'react-router-dom';
+import Preloader from '../common/Preloader/Preloader';
+import ProfileInfo from './ProfileInfo'
 
-
-const Banner = () => {
+const Banner = (props) => {
+    if(!props.profile) {
+        return <Preloader />
+    }
     return (
         <div className={s.banner}>
             <div className="container">
                 <div className={s.row}>
-                    <div className={s.user}>
-                        <h2>User Name</h2>
-                        <h5>User specialty</h5>
-                    </div>
+                <ProfileInfo username = {props.profile.fullName} status = {props.status} updateStatus = {props.updateStatus}/>
                     <div className={s.buttons}>
                         <div className={s.rect_btns}>
                             <a href="#">
@@ -39,11 +40,11 @@ const Banner = () => {
             <div className="profile-menu">
                 <ul className={s.nav}>
                     <li className="active"><NavLink to="/profile" activeclassNameName={s.activeLink}>Profile</NavLink> </li>
-                    <li><a href="#">Jobs</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Blog Posts</a></li>
-                    <li><NavLink to="/conversations" activeclassNameName={s.activeLink}> Conversations</NavLink></li>
+                    <li><NavLink to="/jobs" activeclassName={s.activeLink}>Jobs</NavLink></li>
+                    <li><NavLink to="/contact" activeclassName={s.activeLink}>Contact</NavLink></li>
+                    <li><NavLink to="/portfolio" activeclassName={s.activeLink}>Portfolio</NavLink></li>
+                    <li><NavLink to="/blog" activeclassName={s.activeLink}> Blog Posts</NavLink></li>
+                    <li><NavLink to="/conversations" activeclassName={s.activeLink}> Conversations</NavLink></li>
                     <li><a href="#">Followers (241)</a></li>
                     <li><a href="#">Following</a></li>
                 </ul>

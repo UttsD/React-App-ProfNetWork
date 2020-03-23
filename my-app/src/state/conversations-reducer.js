@@ -22,22 +22,26 @@ let initionalState = {
 }
 
 const conversationsReducer = (state = initionalState, action) => {
-
+    
     switch (action.type) {
         case SEND_MESSAGE:
-            let newMessage = {
-                id: 7,
-                message: state.newMessageText
+            let message = state.newMessageText
+            return {
+                ...state,
+                messages: [...state.messages, {id: 6, message: message}],
+                newMessageText: 'Введите сообщение'
             }
-            state.messages.push(newMessage);
-            state.newMessageText = '';
-            return state;
-
-        case TYPING_MESSAGE:
-            state.newMessageText = action.message;
-            return state;
-        default:
-            return state;
+    
+        
+        case TYPING_MESSAGE: 
+           return {
+                ...state,
+                newMessageText: action.message
+            }
+        
+        
+        default: 
+            return {...state};
     }
 
 }

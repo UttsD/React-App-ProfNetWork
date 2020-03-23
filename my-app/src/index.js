@@ -5,29 +5,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import StoreContext from './StoreContext'
 
+import {Provider} from 'react-redux'
 import {Route, BrowserRouter} from 'react-router-dom'
 
+    
 
-
- let reRender = (state) => {
+ 
      ReactDOM.render(
     <BrowserRouter>
-    <StoreContext.Provider value = {store}>
+    <Provider store = {store}>
     <App /> 
-    </StoreContext.Provider>
+    </Provider>
     </BrowserRouter>, document.getElementById('root'));
-}
 
 
 
-reRender(store.getState());
 
-store.subscribe(() => {
-    let state = store.getState();
-    reRender(state);
 
-});
 serviceWorker.unregister();
 

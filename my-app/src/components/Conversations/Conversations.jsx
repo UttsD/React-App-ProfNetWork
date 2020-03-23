@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Conversations.module.css'
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -23,7 +24,7 @@ const Conversations = (props) => {
         props.typingMessage(message);
     }
 
-    
+    if (!props.isAuth) return  <Redirect to = {"/login"}></Redirect>
     return (
 
         

@@ -1,12 +1,22 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
+import Preloader from '../../common/Preloader/Preloader';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+    
+    if(!props.profile) {
+        return <Preloader />
+    }
+    
+    
     return (
+        
         <div class="details">
         <div class={s.user_photo}>
-            <img src="https://images.unsplash.com/photo-1559449604-5ada01a1ae5c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80"
+            <img src={props.profile.photos.large}
                 width="245px" alt="User-photo"></img>
+              
+               
         </div>
         <div class={s.profile_body}>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, maxime, excepturi, mollitia, voluptatibus similique aliquidautem laudantium sapiente ad enim ipsa modi labo rum accusantium deleniti neque architecto vitae.<br></br>

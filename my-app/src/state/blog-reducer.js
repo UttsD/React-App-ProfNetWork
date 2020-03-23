@@ -16,21 +16,28 @@ let initionalState = {
 const blogReducer = (state = initionalState, action) => {
 
     switch (action.type) {
-        case ADD_POST:
+        case ADD_POST: {
             let newPost = {
                 id: 5,
                 name: state.newPostText,
                 likes: 0
             };
-            state.posts.push(newPost);
-            state.newPostText = 'Заголовок поста';
-            return state;
-
-        case UPDATE_NEW_POST:
-            state.newPostText = action.text;
-            return state;
-        default:
-            return state;
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: 'Заголовок поста'
+            }
+            
+        }
+        case UPDATE_NEW_POST: {
+            return {
+                ...state,
+                newPostText: action.text
+            };
+        }
+        default:{
+            return {...state};
+        }
     }
 
 }

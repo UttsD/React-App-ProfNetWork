@@ -1,26 +1,28 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
-import Banner from './components/Banner/Banner';
-import Profile from './components/Profile/Profile';
-
+import ProfileContainer from './components/Profile/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 import {Route, BrowserRouter} from 'react-router-dom'
 import BlogContainer from './components/Blog/BlogContainer';
+import Login from './components/Login/Login';
 import ConversationsContainer from './components/Conversations/ConversationsContainer';
 
 const App = (props) => {
   
   return (
    <div className = 'app-wrapper'>
-     <Header />
-     <Banner />
+     <HeaderContainer />
      
+     <Route path = "/profile/:userID?" render = {() => <ProfileContainer />}/>
      <div class="container">
-  <Route path = "/profile" render = {() => <Profile />}/>
-    
-  <Route path = "/profile" render = {() => <BlogContainer />}/> 
+  
+  <Route path = "/profile" render = {() => <BlogContainer />}/>   
+  <Route path = "/blog" render = {() => <BlogContainer />}/> 
+  <Route path = "/users" render = {() => <UsersContainer />}/> 
   <Route path = "/conversations" render = {() => <ConversationsContainer />}/>
+  <Route path = "/login" render = {() => <Login />}/>
      </div> 
      
      </div>

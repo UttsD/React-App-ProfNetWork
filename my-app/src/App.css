@@ -1,5 +1,5 @@
 /*Main*/
-h1, h2, h3, h4, h5, p, span, div, a, ul, li {
+h1, h2, h3, h4, h5, h6, p, span, div, a, ul, li {
 	padding: 0px;
 	margin: 0;
     box-sizing: border-box;
