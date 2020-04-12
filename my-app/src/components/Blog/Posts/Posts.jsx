@@ -1,12 +1,9 @@
 import React from 'react';
-import s from './Posts.module.css'
 import Post from './Post/Post';
 
-const Posts = (props) => {
-
+const Posts = React.memo( props => {
     
-    
-    let PostsJSX = props.posts.map(p => <Post name={p.name} likes={p.likes} />);
+    let PostsJSX = props.posts.map(p => <Post name={p.name} likes={p.likes}  desc = {p.desc} text = {p.text}/>);
 
     return (
 
@@ -15,6 +12,6 @@ const Posts = (props) => {
         </div>
 
     );
-};
+});
 
 export default Posts;

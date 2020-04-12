@@ -1,7 +1,7 @@
 import React from 'react';
 import * as axios from 'axios';
 import { connect } from 'react-redux';
-import {getMeThunk} from '../../state/auth-reducer'
+import { logout} from '../../actions/auth-actions'
 import Header from './Header';
 
 
@@ -12,12 +12,6 @@ class HeaderContainer extends React.Component {
         return  <Header {...this.props} />
        
     }
-
-    componentDidMount() {
-        this.props.getMeThunk();
-        
-    }
-    
 
 };
 
@@ -31,4 +25,4 @@ let mapStateToProps = (state) => ({
 
 
 
-export default connect(mapStateToProps, {getMeThunk})(HeaderContainer)
+export default connect(mapStateToProps, {logout})(HeaderContainer)

@@ -21,6 +21,8 @@ export const UsersREQ = {
     }
 }
 
+
+
 export const ProfileREQ = {
     getUserProfile(userId) {
         return instanse.get(`profile/` + userId).then(response => {
@@ -36,8 +38,21 @@ export const ProfileREQ = {
         return instanse.put(`profile/status`, {status: status} )
     
     },
-}
+    saveProfile(profile) {
+        return instanse.put(`profile`, profile )
+    
+    },
+    savePhoto(imgFile) {
+        var formData = new FormData();
+        formData.append("image", imgFile);
 
+        return instanse.put(`profile/photo`,  formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+    }
+}
 
 
 export const FollowREQ = {
@@ -59,7 +74,28 @@ export const AuthREQ = {
         return instanse.get(`auth/me`).then(response => {
             return response.data
         }); 
+    },
+
+    login(email, password, rememberMe=false, captcha= null) {
+        return instanse.post(`auth/login`, {email, password, rememberMe, captcha}).then(response => {
+            return response.data
+        })
+    },
+        logout() {
+            return instanse.delete(`auth/login`).then(response => {
+                return response.data
+            })
     }
+}
+export const SecurityAPI = {
+    getCaptchaUrl() {
+        return instanse.get(`security/get-captcha-url`).then(response => {
+            
+            return response.data
+        }); 
+    }
+
+    
 }
 
 

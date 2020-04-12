@@ -133,4 +133,25 @@ Redux - библиотека, которая реализует FLUX архит�
  reducers - чистые функции, которые принимают часть стейта (state), принимают экшены (actions) и этот state модифицируют
 HOC - Hight Order Component - компонент высшего порядка - просто функция, которая принимает на вход компонент, и возвращает другой компонент
 
+
+
+
+
 */
+
+
+case FOLLOW_USER: {
+
+  return {
+      ...state,
+      users: updateObjectInArray( state.users, action.userID, 'id', {followed: true})  
+  }
+}
+
+case UNFOLLOW_USER: {
+
+  return {
+      ...state,
+      users: updateObjectInArray( state.users, action.userID, 'id', {followed: false})  
+  }
+}

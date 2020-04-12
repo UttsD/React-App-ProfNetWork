@@ -1,0 +1,50 @@
+.selected{
+    font-weight: bold;
+    background: #0099ff;
+    color: #fff;
+    border-radius: 50%;
+    
+}
+
+.paginator{
+    margin:  0px 8px;
+    width: 30px;
+    height:  30px;
+    display: block;
+    text-align: center;
+    line-height: 30px;
+}
+
+.paginator__inner{
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: none;
+  }
+  .buttons:after {
+    position: absolute;
+    top: 10px;;
+    
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-left: 3px solid gray;
+    border-bottom: 3px solid gray;
+    
+  }
+
+
+  .next:after{
+    transform: rotate(-135deg);
+    right: 12px;
+  }
+  .prev:after{
+      transform: rotate(45deg);
+      left: 12px;
+  }

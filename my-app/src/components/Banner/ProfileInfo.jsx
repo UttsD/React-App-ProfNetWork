@@ -1,62 +1,87 @@
-import React from 'react';
+import React, { useState } from 'react';
 import s from './Banner.module.css'
+import { useEffect } from 'react';
 
 
-class ProfileInfo extends React.Component {
-    state = {
-        editMode: false,
-        status: this.props.status
+const ProfileInfoHooks = ({status, username, updateStatus}) => {
+
+    let [editMode, setEditMode] = useState(false);
+    let [myStatus, setStatus] = useState(status);
+
+    useEffect(() => {
+        setStatus(status);
+    }, [status])
+
+    const activateEditMode = () => {
+        setEditMode(true);
     }
-    activateEditMode = () => {
-        this.setState(
-            {
-                editMode: true
+    const deActivateEditMode = () => {
+        setEditMode(false);
+        updateStatus(myStatus)
+    }
+    const onStatusChange = (e) => {
+        setStatus(e.currentTarget.value)
+    }
+
+
+    return (
+        <div className={s.user}>
+            <h2 >{username}</h2>
+            {!editMode &&
+                <h5 onDoubleClick={activateEditMode}>{status || "Что у вас нового?"}</h5>
+
             }
-        )
-    }
-    deActivateEditMode = () => {
-        this.setState(
-            {
-                editMode: false
+            {editMode &&
+                <input onChange={onStatusChange} autoFocus={true}
+                    onBlur={deActivateEditMode}
+                    value={myStatus} />
             }
-        )
-        this.props.updateStatus(this.state.status)
-    }
-    onStatusChange = (e) => {
-        this.setState({
-            status: e.currentTarget.value
-        });
-    }
 
-    componentDidUpdate(prevProps){
-        if(prevProps.status !== this.props.status){
-            this.setState({
-                status: this.props.status
-            })
-        }
-    }
+        </div>
 
-    render() {
-       
-        return (
-            <div className={s.user}>
-                <h2 >{this.props.username}</h2>
-                {!this.state.editMode &&
-                    <h5 onDoubleClick = {this.activateEditMode}>{this.props.status || "Что у вас нового?"}</h5>
+    );
 
-                }
-                {this.state.editMode &&
-                    <input onChange = {this.onStatusChange} autoFocus={true} 
-                    onBlur = {this.deActivateEditMode} 
-                    value={this.state.status} />
-                }
-
-            </div>
-
-        );
-    }
 
 
 };
+// class ProfileInfo extends React.Component {
+//     state = {
+//         editMode: false,
+//         status: this.props.status
+//     }
+//     
+//     
+//    
 
-export default ProfileInfo;
+//     componentDidUpdate(prevProps){
+//         if(prevProps.status !== this.props.status){
+//             this.setState({
+//                 status: this.props.status
+//             })
+//         }
+//     }
+
+//     render() {
+
+//         return (
+//             <div className={s.user}>
+//                 <h2 >{this.props.username}</h2>
+//                 {!this.state.editMode &&
+//                     <h5 onDoubleClick = {this.activateEditMode}>{this.props.status || "Что у вас нового?"}</h5>
+
+//                 }
+//                 {this.state.editMode &&
+//                     <input onChange = {this.onStatusChange} autoFocus={true} 
+//                    
+//                     value={this.state.status} />
+//                 }
+
+//             </div>
+
+//         );
+//     }
+
+
+// };
+
+export default ProfileInfoHooks;

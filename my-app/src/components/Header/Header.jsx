@@ -18,7 +18,7 @@ const Header = (props) => {
               <li className="link-menu"><a href="#">Pages</a></li>
               
               <li className="link-menu"><a href="#">Blog</a></li>
-              {props.isAuth? <li className="link-menu active"><NavLink to="/login">Log Out</NavLink></li> : <li className="link-menu active"><NavLink to="/login">Log In</NavLink></li>}
+              {props.isAuth? <li className="link-menu active"><NavLink to="/logout" onClick = {props.logout}>Log Out</NavLink></li> : <li className="link-menu active"><NavLink to="/login">Log In</NavLink></li>}
               
             </ul>
           </nav>

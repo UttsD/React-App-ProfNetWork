@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 import Banner from '../Banner/Banner';
-import { Redirect } from 'react-router-dom';
+
 
 const Profile = (props) => {
     
@@ -13,7 +13,7 @@ const Profile = (props) => {
         <h3 class='headers'>About</h3>
         
 
-        <ProfileInfo profile = {props.profile}/>
+        <ProfileInfo saveProfile={props.saveProfile} isOwner = {props.isOwner} profile = {props.profile} savePhoto = {props.savePhoto}/>
         
         
     </section>

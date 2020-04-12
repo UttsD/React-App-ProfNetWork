@@ -5,10 +5,16 @@ import {
   getUsers,
   followThunk,
   unFollowThunk
-} from '../../state/users-reducer';
+} from '../../actions/users-actions';
+import {
+  getUsersFromState,
+  getPageSize,
+  getCurrentPage,
+  getDisableFollowButton,
+  getTotalUserCount
+} from '../../reducers/users-selectors';
 import Users from './Users';
 import { connect } from 'react-redux';
-import * as axios from 'axios';
 import Preloader from '../common/Preloader/Preloader';
 
 
@@ -37,23 +43,36 @@ class UsersAPI extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.pageSize);
+    const {currentPage, pageSize} = this.props
+    this.props.getUsers(currentPage, pageSize);
   }
 
   changePage = (pageNumber) => {
-    this.props.getUsers(pageNumber, this.props.pageSize);
+    const {pageSize} = this.props
+    this.props.getUsers(pageNumber, pageSize);
   }
 }
 
+// let mapStateToProps = (state) => {
+//   return {
+
+//     users: state.users.users,
+//     pageSize: state.users.pageSize,
+    
+//     currentPage: state.users.currentPage,
+//     disableFollowButton: state.users.disableFollowButton,
+//     totalUserCount: state.users.totalUserCount
+//   }
+// }
+
 let mapStateToProps = (state) => {
   return {
+    users: getUsersFromState(state),
+    pageSize: getPageSize(state),
+    currentPage: getCurrentPage(state),
+    disableFollowButton: getDisableFollowButton(state),
+    totalUserCount: getTotalUserCount(state)
 
-    users: state.users.users,
-    pageSize: state.users.pageSize,
-    
-    currentPage: state.users.currentPage,
-    disableFollowButton: state.users.disableFollowButton,
-    totalUserCount: state.users.totalUserCount
   }
 }
 
